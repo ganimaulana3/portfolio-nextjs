@@ -1,7 +1,10 @@
 import Dataloading from "@/components/Dataloading";
 import useFetchData from "@/hooks/useFetchData";
+import Link from "next/link";
 import { useState } from "react";
 import { SiBloglovin, SiPowerpages } from "react-icons/si";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 
 export default function Blogs() {
@@ -38,7 +41,7 @@ export default function Blogs() {
             <div className="blogstable">
                 <div className="flex gap-2 mb-1">
                     <h2>Search Blogs:</h2>
-                    <input type="text" placeholder="Search by title..." />
+                    <input value={searchQuery} onChange={ev => setSearchQuery(ev.target.value)} type="text" placeholder="Search by title..." />
                 </div>
                 <table className="table table-styling">
                     <thead>
@@ -65,6 +68,14 @@ export default function Blogs() {
                                 publishedBlogs.map((blog, index) => (
                                     <tr key={blog._id}>
                                         <td>{indexOfFirstBlog + index + 1}</td>
+                                        <td><img src={blog.images[0]} width={100} alt="image" /></td>
+                                        <td><h3>{blog.title}</h3></td>
+                                        <td>
+                                            <div className="flex gap-2 flex-center">
+                                                <Link href={'/blogs/edit/' + blog._id}><button><FaEdit /></button></Link>
+                                                <Link href={'/blogs/delete/' + blog._id}><button><RiDeleteBin6Fill /></button></Link>
+                                            </div>
+                                        </td>
                                     </tr>
                                 ))
                             )}
