@@ -14,7 +14,7 @@ export default function DeleteProduct() {
         if (!id) {
             return;
         } else {
-            axios.get('/api/blogs?id=' + id).then(response => {
+            axios.get('/api/projects?id=' + id).then(response => {
                 setProductInfo(response.data)
             })
         }
