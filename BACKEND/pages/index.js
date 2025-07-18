@@ -141,6 +141,34 @@ export default function Home() {
                 <li className="small-dot"></li>
               </ul>
             </div>
+            <div className="blogscategory flex flex-center">
+              <table>
+                <thead>
+                  <tr>
+                    <td>Topics</td>
+                    <td>Data</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Next Js</td>
+                    <td>{blogsData.filter(dat => dat.blogcategory[0] === "Next js").length}</td>
+                  </tr>
+                  <tr>
+                    <td>Css</td>
+                    <td>{blogsData.filter(dat => dat.blogcategory[0] === "Css").length}</td>
+                  </tr>
+                  <tr>
+                    <td>Node Js</td>
+                    <td>{blogsData.filter(dat => dat.blogcategory[0] === "Node js").length}</td>
+                  </tr>
+                  <tr>
+                    <td>React Js</td>
+                    <td>{blogsData.filter(dat => dat.blogcategory[0] === "React js").length}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

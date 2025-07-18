@@ -41,7 +41,7 @@ export default function DeleteProduct() {
                     <h3>Admin Panel</h3>
                 </div>
                 <div className="breadcrumb">
-                    <BsPostcard /> <span>/</span> <span>Edit Blog</span>
+                    <BsPostcard /> <span>/</span> <span>Delete Blog</span>
                 </div>
             </div>
             <div className="deletesec flex flex-center wh_100">
