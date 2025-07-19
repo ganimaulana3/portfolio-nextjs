@@ -31,18 +31,18 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const response = await fetch('/api/blogs');
-        // const responseProject = await fetch('/api/projects');
-        // const responseShop = await fetch('/api/shops');
-        // const responseGallery = await fetch('/api/photos');
+        const responseProject = await fetch('/api/projects');
+        const responseShop = await fetch('/api/shops');
+        const responseGallery = await fetch('/api/photos');
         const data = await response.json();
-        // const dataProject = await responseProject.json();
-        // const dataShop = await responseShop.json();
-        // const dataPhotos = await responseGallery.json();
+        const dataProject = await responseProject.json();
+        const dataShop = await responseShop.json();
+        const dataPhotos = await responseGallery.json();
 
         setBlogsData(data);
-        // setProjectData(dataProject);
-        // setShopData(dataShop);
-        // setPhotosData(dataPhotos);
+        setProjectData(dataProject);
+        setShopData(dataShop);
+        setPhotosData(dataPhotos);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -100,15 +100,15 @@ export default function Home() {
           </div>
           <div className="four_card">
             <h2>Total Projects</h2>
-            <span>5</span>
+            <span>{projectData.filter(dat => dat.status === 'publish').length}</span>
           </div>
           <div className="four_card">
             <h2>Total Products</h2>
-            <span>5</span>
+            <span>{shopData.filter(dat => dat.status === 'publish').length}</span>
           </div>
           <div className="four_card">
             <h2>Gallery Photos</h2>
-            <span>5</span>
+            <span>{photosData.length}</span>
           </div>
         </div>
 
