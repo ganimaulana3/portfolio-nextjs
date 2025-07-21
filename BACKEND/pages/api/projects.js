@@ -6,9 +6,9 @@ export default async function handle(req, res) {
     await mongooseConnect();
     const {method} = req;
     if (method === 'POST') {
-        const {title, slug, images, description, afilink, tags, price, status} = req.body;
+        const {title, slug, images, description, client, projectcategory, tags, livepreview, status} = req.body;
         const blogDoc = await Project.create({
-            title, slug, images, description, afilink, tags, price, status
+            title, slug, images, description, client, projectcategory, tags, livepreview, status
         })
 
         res.json(blogDoc)
@@ -23,9 +23,9 @@ export default async function handle(req, res) {
     }
 
     if (method === 'PUT') {
-        const {_id, title, slug, images, description, afilink, tags, price, status} = req.body;
+        const {_id, title, slug, images, description, client, projectcategory, tags, livepreview, status} = req.body;
         await Project.updateOne({_id}, {
-            title, slug, images, description, afilink, tags, price, status
+            title, slug, images, description, client, projectcategory, tags, livepreview, status
         });
 
         res.json(true)
