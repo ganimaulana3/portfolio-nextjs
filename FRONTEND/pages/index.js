@@ -5,6 +5,8 @@ import { BiDownload } from "react-icons/bi";
 import { FaGithub, FaInstagram, FaLinkedin, FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import Spinner from "@/components/Spinner";
+import { LuMedal } from "react-icons/lu";
+import { PiGraduationCap } from "react-icons/pi";
 
 
 export default function Home() {
@@ -168,16 +170,16 @@ export default function Home() {
                 <h1 className="w-100 flex flex-center mt-3">No Project Found</h1>
               ) : (
                 filteredProjects.slice(0, 4).map((pro) => (
-                <Link href='/' key={pro._id} className="procard">
-                  <div className="proimgbox">
-                    <img src={pro.images[0]} alt={pro.title} />
-                  </div>
-                  <div className="procontentbox">
-                    <h2>{pro.title}</h2>
-                    <GoArrowRight />
-                  </div>
-                </Link>
-              ))
+                  <Link href='/' key={pro._id} className="procard">
+                    <div className="proimgbox">
+                      <img src={pro.images[0]} alt={pro.title} />
+                    </div>
+                    <div className="procontentbox">
+                      <h2>{pro.title}</h2>
+                      <GoArrowRight />
+                    </div>
+                  </Link>
+                ))
               )
             )}
 
@@ -189,7 +191,39 @@ export default function Home() {
 
       {/* Experience study */}
       <section className="exstudy">
-
+        <div className="container flex flex-left flex-sb">
+          <div className="experience">
+            <div className="experience_title flex gap-1">
+              <LuMedal />
+              <h2>My Experience</h2>
+            </div>
+            <div className="exper_cards">
+              <div className="exper_card">
+                <span>Juli - September 2022</span>
+                <h3>Pemprov Jabar - Gedung Sate</h3>
+                <p>IT Support</p>
+              </div>
+            </div>
+          </div>
+          <div className="education">
+            <div className="experience_title flex gap-1">
+              <PiGraduationCap />
+              <h2>My Education</h2>
+            </div>
+            <div className="exper_cards">
+              <div className="exper_card">
+                <span>2023 - Present</span>
+                <h3>Universitas Dian Nuswantoro</h3>
+                <p>Teknik Informatika</p>
+              </div>
+              <div className="exper_card">
+                <span>2020 - 2023</span>
+                <h3>SMKN 1 Banjar</h3>
+                <p>Rekayasa Perangkat Lunak</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* My Skills */}
