@@ -234,20 +234,20 @@ img {
 /* ================================================== */
 
 :root {
-    --main-site-color: #00b4d8;
+    /* --main-site-color: #00b4d8;
     --dark-black: #000;
     --rgba-dark: rgba(0, 0, 0, 0);
     --pure-white: #fff;
     --week-white: #F6F3FC;
     --dark-site-secondary: #03045e;
-    --main-hover-color: #90e0ef;
+    --main-hover-color: #90e0ef; */
 
-    /* --main-site-color: #9500ff;
+    --main-site-color: #9500ff;
     --dark-black: #000;
     --pure-white: #fff;
     --week-white: #F6F3FC;
     --dark-site-secondary: #19195c;
-    --main-hover-color: #905ff1; */
+    --main-hover-color: #905ff1;
 }
 
 .container {
@@ -2238,7 +2238,22 @@ header.sticky {
     position: absolute;
     bottom: 0;
     left: 0;
+    width: 100%;
     padding: 30px;
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.fpostinfo::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.3;
+    z-index: -1;
 }
 
 .tegs {
@@ -2402,6 +2417,7 @@ header.sticky {
 
 .latestposts {
     position: relative;
+    margin-bottom: 4rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -2530,6 +2546,7 @@ header.sticky {
 
 .poputegs {
     margin-top: 1rem;
+    margin-bottom: 4rem;
     position: relative;
     display: flex;
     align-items: center;
@@ -4861,6 +4878,7 @@ header.sticky {
         padding-left: 1rem;
         padding-right: 1rem;
     }
+    
 
     .latestpostsdata,
     .populartegsdata {

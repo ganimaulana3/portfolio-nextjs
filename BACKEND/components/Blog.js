@@ -181,7 +181,7 @@ export default function Blog(
                                         <pre style={{padding: '0', borderRadius: '5px', overflowX: 'auto', whiteSpace: 'pre-wrap'}} {...props}>
                                             <code>{children}</code>
                                         </pre>
-                                        <button style={{position: 'absolute', top: '0', right: '0', zIndex: '1'}} onClick={() => 
+                                        <button style={{position: 'absolute', top: '0', right: '0', zIndex: '10'}} onClick={() => 
                                             navigator.clipboard.writeText(children)
                                         }> copy text</button>
                                     </div>

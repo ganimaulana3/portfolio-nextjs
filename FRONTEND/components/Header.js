@@ -50,7 +50,10 @@ export default function Header() {
         setMobile(false);
     }
 
+    const hiddenHeroPages = ['/'];
+
     return <>
+    {activeLink === '/' && (
         <section className="hero">
             <div className={darkMode ? '' : 'shining-star'}>
                 <div className="night">
@@ -131,6 +134,7 @@ export default function Header() {
                 </div>
             </div>
         </section>
+    )}
         <header>
             <nav className="container flex flex-sb">
                 <div className="logo flex gap-2">

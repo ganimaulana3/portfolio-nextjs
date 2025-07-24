@@ -2,7 +2,7 @@ import Head from "next/head";
 import { GoArrowRight, GoArrowUpRight } from "react-icons/go";
 import Link from "next/link";
 import { BiDownload } from "react-icons/bi";
-import { FaGithub, FaInstagram, FaLinkedin, FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa6";
+import { FaCalendarDays, FaGithub, FaInstagram, FaLinkedin, FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import Spinner from "@/components/Spinner";
 import { LuMedal } from "react-icons/lu";
@@ -50,11 +50,15 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const [projectResponse, blogResponse] = await Promise.all([
-          fetch('/api/projects')
+          fetch('/api/projects'),
+          fetch('/api/blogs')
         ])
 
         const projectData = await projectResponse.json();
+        const blogData = await blogResponse.json();
+
         setAlldata(projectData);
+        setAllwork(blogData);
 
       } catch (error) {
         console.error('Error Fetching Data', error)
@@ -76,6 +80,21 @@ export default function Home() {
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
+  }
+
+  const formatDate = (date) => {
+    if (!date || isNaN(date)) {
+      return '';
+    }
+
+    const options = {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour12: true
+    };
+
+    return new Intl.DateTimeFormat('en-US', options).format(date);
   }
 
   return (
@@ -228,12 +247,84 @@ export default function Home() {
 
       {/* My Skills */}
       <section className="myskills">
-
+        <div className="container">
+          <div className="myskills_title">
+            <h2>My Skills</h2>
+            <p>We put your ideas and thus your wishes in the form of a unique web project that inspires you and your customers.</p>
+          </div>
+          <div className="myskils_cards">
+            <div className="mys_card">
+              <div className="mys_inner">
+                <img src="/img/python.svg" alt="skill" />
+                <h3>92%</h3>
+              </div>
+              <p className="text-center">Python</p>
+            </div>
+            <div className="mys_card">
+              <div className="mys_inner">
+                <img src="/img/firebase.svg" alt="skill" />
+                <h3>82%</h3>
+              </div>
+              <p className="text-center">Firebase</p>
+            </div>
+            <div className="mys_card">
+              <div className="mys_inner">
+                <img src="/img/mongodb.svg" alt="skill" />
+                <h3>85%</h3>
+              </div>
+              <p className="text-center">MongoDB</p>
+            </div>
+            <div className="mys_card">
+              <div className="mys_inner">
+                <img src="/img/redux.svg" alt="skill" />
+                <h3>80%</h3>
+              </div>
+              <p className="text-center">Redux</p>
+            </div>
+            <div className="mys_card">
+              <div className="mys_inner">
+                <img src="/img/react.svg" alt="skill" />
+                <h3>90%</h3>
+              </div>
+              <p className="text-center">React</p>
+            </div>
+            <div className="mys_card">
+              <div className="mys_inner">
+                <img src="/img/js.svg" alt="skill" />
+                <h3>92%</h3>
+              </div>
+              <p className="text-center">JavaScript</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Recent Blogs */}
       <section className="recentblogs">
-
+        <div className="container">
+          <div className="myskills_title">
+            <h2>Recent Blogs</h2>
+            <p>We put your ideas and thus your wishes in the form of a unique web project that inspires you and your customers.</p>
+          </div>
+          <div className="recent_blogs">
+            {allwork.slice(0, 3).map((blog) => {
+              return <Link href={`/blogs/${blog.slug}`} key={blog._id} className="re_blog">
+                <div className="re_blogimg">
+                  <img src={blog.images[0] || '/img/noimage.png'} alt={blog.title} />
+                  <span>{blog.blogcategory[0]}</span>
+                </div>
+                <div className="re_bloginfo">
+                  <div className="re_topdate flex gap-1">
+                    <div className="res_data">
+                      <FaCalendarDays /> <span>{formatDate(new Date(blog.createdAt))}</span>
+                    </div>
+                  </div>
+                  <h2>{blog.title}</h2>
+                </div>
+              </Link>
+            })}
+          </div>
+        </div>
       </section>
 
     </>
